@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Code coverage report for node-npmtest-bl/bl/bl.js</title>
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-bl/node_modules/bl/bl.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -194,7 +192,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-bl">npmtest-bl (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-bl/bl/bl.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-bl/node_modules/bl/bl.js</span></h1>
     <h2>
         
         Statements: <span class="metric">16.08% <small>(23 / 143)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-bl/bl/</a> &#187; bl.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-bl/node_modules/bl/</a> » bl.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -780,136 +778,136 @@
   , util         = require('util')
 &nbsp;
 &nbsp;
-<span class="fstat-no" title="function not covered" >function BufferList (callback) {</span>
-<span class="cstat-no" title="statement not covered" >  if (!(this instanceof BufferList))</span>
-<span class="cstat-no" title="statement not covered" >    return new BufferList(callback)</span>
+<span class="fstat-no" title="function not covered">function BufferList (callback) {</span>
+<span class="cstat-no" title="statement not covered">  if (!(this instanceof BufferList))</span>
+<span class="cstat-no" title="statement not covered">    return new BufferList(callback)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  this._bufs  = []</span>
-<span class="cstat-no" title="statement not covered" >  this.length = 0</span>
+<span class="cstat-no" title="statement not covered">  this._bufs  = []</span>
+<span class="cstat-no" title="statement not covered">  this.length = 0</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (typeof callback == 'function') {</span>
-<span class="cstat-no" title="statement not covered" >    this._callback = callback</span>
+<span class="cstat-no" title="statement not covered">  if (typeof callback == 'function') {</span>
+<span class="cstat-no" title="statement not covered">    this._callback = callback</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    var piper = <span class="fstat-no" title="function not covered" >function piper (err) {</span></span>
-<span class="cstat-no" title="statement not covered" >      if (this._callback) {</span>
-<span class="cstat-no" title="statement not covered" >        this._callback(err)</span>
-<span class="cstat-no" title="statement not covered" >        this._callback = null</span>
+<span class="cstat-no" title="statement not covered">    var piper = <span class="fstat-no" title="function not covered">function piper (err) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (this._callback) {</span>
+<span class="cstat-no" title="statement not covered">        this._callback(err)</span>
+<span class="cstat-no" title="statement not covered">        this._callback = null</span>
       }
     }.bind(this)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    this.on('pipe', <span class="fstat-no" title="function not covered" >function onPipe (src) {</span></span>
-<span class="cstat-no" title="statement not covered" >      src.on('error', piper)</span>
+<span class="cstat-no" title="statement not covered">    this.on('pipe', <span class="fstat-no" title="function not covered">function onPipe (src) {</span></span>
+<span class="cstat-no" title="statement not covered">      src.on('error', piper)</span>
     })
-<span class="cstat-no" title="statement not covered" >    this.on('unpipe', <span class="fstat-no" title="function not covered" >function onUnpipe (src) {</span></span>
-<span class="cstat-no" title="statement not covered" >      src.removeListener('error', piper)</span>
+<span class="cstat-no" title="statement not covered">    this.on('unpipe', <span class="fstat-no" title="function not covered">function onUnpipe (src) {</span></span>
+<span class="cstat-no" title="statement not covered">      src.removeListener('error', piper)</span>
     })
   } else {
-<span class="cstat-no" title="statement not covered" >    this.append(callback)</span>
+<span class="cstat-no" title="statement not covered">    this.append(callback)</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  DuplexStream.call(this)</span>
+<span class="cstat-no" title="statement not covered">  DuplexStream.call(this)</span>
 }
 &nbsp;
 &nbsp;
 util.inherits(BufferList, DuplexStream)
 &nbsp;
 &nbsp;
-BufferList.prototype._offset = <span class="fstat-no" title="function not covered" >function _offset (offset) {</span>
-<span class="cstat-no" title="statement not covered" >  var tot = 0, i = 0, _t</span>
-<span class="cstat-no" title="statement not covered" >  if (offset === 0) <span class="cstat-no" title="statement not covered" >return [ 0, 0 ]</span></span>
-<span class="cstat-no" title="statement not covered" >  for (; i &lt; this._bufs.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >    _t = tot + this._bufs[i].length</span>
-<span class="cstat-no" title="statement not covered" >    if (offset &lt; _t || i == this._bufs.length - 1)</span>
-<span class="cstat-no" title="statement not covered" >      return [ i, offset - tot ]</span>
-<span class="cstat-no" title="statement not covered" >    tot = _t</span>
+BufferList.prototype._offset = <span class="fstat-no" title="function not covered">function _offset (offset) {</span>
+<span class="cstat-no" title="statement not covered">  var tot = 0, i = 0, _t</span>
+<span class="cstat-no" title="statement not covered">  if (offset === 0) <span class="cstat-no" title="statement not covered">return [ 0, 0 ]</span></span>
+<span class="cstat-no" title="statement not covered">  for (; i &lt; this._bufs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered">    _t = tot + this._bufs[i].length</span>
+<span class="cstat-no" title="statement not covered">    if (offset &lt; _t || i == this._bufs.length - 1)</span>
+<span class="cstat-no" title="statement not covered">      return [ i, offset - tot ]</span>
+<span class="cstat-no" title="statement not covered">    tot = _t</span>
   }
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.append = <span class="fstat-no" title="function not covered" >function append (buf) {</span>
-<span class="cstat-no" title="statement not covered" >  var i = 0</span>
+BufferList.prototype.append = <span class="fstat-no" title="function not covered">function append (buf) {</span>
+<span class="cstat-no" title="statement not covered">  var i = 0</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (Buffer.isBuffer(buf)) {</span>
-<span class="cstat-no" title="statement not covered" >    this._appendBuffer(buf);</span>
-  } else <span class="cstat-no" title="statement not covered" >if (Array.isArray(buf)) {</span>
-<span class="cstat-no" title="statement not covered" >    for (; i &lt; buf.length; i++)</span>
-<span class="cstat-no" title="statement not covered" >      this.append(buf[i])</span>
-  } else <span class="cstat-no" title="statement not covered" >if (buf instanceof BufferList) {</span>
+<span class="cstat-no" title="statement not covered">  if (Buffer.isBuffer(buf)) {</span>
+<span class="cstat-no" title="statement not covered">    this._appendBuffer(buf);</span>
+  } else <span class="cstat-no" title="statement not covered">if (Array.isArray(buf)) {</span>
+<span class="cstat-no" title="statement not covered">    for (; i &lt; buf.length; i++)</span>
+<span class="cstat-no" title="statement not covered">      this.append(buf[i])</span>
+  } else <span class="cstat-no" title="statement not covered">if (buf instanceof BufferList) {</span>
     // unwrap argument into individual BufferLists
-<span class="cstat-no" title="statement not covered" >    for (; i &lt; buf._bufs.length; i++)</span>
-<span class="cstat-no" title="statement not covered" >      this.append(buf._bufs[i])</span>
-  } else <span class="cstat-no" title="statement not covered" >if (buf != null) {</span>
+<span class="cstat-no" title="statement not covered">    for (; i &lt; buf._bufs.length; i++)</span>
+<span class="cstat-no" title="statement not covered">      this.append(buf._bufs[i])</span>
+  } else <span class="cstat-no" title="statement not covered">if (buf != null) {</span>
     // coerce number arguments to strings, since Buffer(number) does
     // uninitialized memory allocation
-<span class="cstat-no" title="statement not covered" >    if (typeof buf == 'number')</span>
-<span class="cstat-no" title="statement not covered" >      buf = buf.toString()</span>
+<span class="cstat-no" title="statement not covered">    if (typeof buf == 'number')</span>
+<span class="cstat-no" title="statement not covered">      buf = buf.toString()</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    this._appendBuffer(new Buffer(buf));</span>
+<span class="cstat-no" title="statement not covered">    this._appendBuffer(new Buffer(buf));</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return this</span>
+<span class="cstat-no" title="statement not covered">  return this</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype._appendBuffer = <span class="fstat-no" title="function not covered" >function appendBuffer (buf) {</span>
-<span class="cstat-no" title="statement not covered" >  this._bufs.push(buf)</span>
-<span class="cstat-no" title="statement not covered" >  this.length += buf.length</span>
+BufferList.prototype._appendBuffer = <span class="fstat-no" title="function not covered">function appendBuffer (buf) {</span>
+<span class="cstat-no" title="statement not covered">  this._bufs.push(buf)</span>
+<span class="cstat-no" title="statement not covered">  this.length += buf.length</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype._write = <span class="fstat-no" title="function not covered" >function _write (buf, encoding, callback) {</span>
-<span class="cstat-no" title="statement not covered" >  this._appendBuffer(buf)</span>
+BufferList.prototype._write = <span class="fstat-no" title="function not covered">function _write (buf, encoding, callback) {</span>
+<span class="cstat-no" title="statement not covered">  this._appendBuffer(buf)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (typeof callback == 'function')</span>
-<span class="cstat-no" title="statement not covered" >    callback()</span>
+<span class="cstat-no" title="statement not covered">  if (typeof callback == 'function')</span>
+<span class="cstat-no" title="statement not covered">    callback()</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype._read = <span class="fstat-no" title="function not covered" >function _read (size) {</span>
-<span class="cstat-no" title="statement not covered" >  if (!this.length)</span>
-<span class="cstat-no" title="statement not covered" >    return this.push(null)</span>
+BufferList.prototype._read = <span class="fstat-no" title="function not covered">function _read (size) {</span>
+<span class="cstat-no" title="statement not covered">  if (!this.length)</span>
+<span class="cstat-no" title="statement not covered">    return this.push(null)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  size = Math.min(size, this.length)</span>
-<span class="cstat-no" title="statement not covered" >  this.push(this.slice(0, size))</span>
-<span class="cstat-no" title="statement not covered" >  this.consume(size)</span>
+<span class="cstat-no" title="statement not covered">  size = Math.min(size, this.length)</span>
+<span class="cstat-no" title="statement not covered">  this.push(this.slice(0, size))</span>
+<span class="cstat-no" title="statement not covered">  this.consume(size)</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.end = <span class="fstat-no" title="function not covered" >function end (chunk) {</span>
-<span class="cstat-no" title="statement not covered" >  DuplexStream.prototype.end.call(this, chunk)</span>
+BufferList.prototype.end = <span class="fstat-no" title="function not covered">function end (chunk) {</span>
+<span class="cstat-no" title="statement not covered">  DuplexStream.prototype.end.call(this, chunk)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (this._callback) {</span>
-<span class="cstat-no" title="statement not covered" >    this._callback(null, this.slice())</span>
-<span class="cstat-no" title="statement not covered" >    this._callback = null</span>
+<span class="cstat-no" title="statement not covered">  if (this._callback) {</span>
+<span class="cstat-no" title="statement not covered">    this._callback(null, this.slice())</span>
+<span class="cstat-no" title="statement not covered">    this._callback = null</span>
   }
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.get = <span class="fstat-no" title="function not covered" >function get (index) {</span>
-<span class="cstat-no" title="statement not covered" >  return this.slice(index, index + 1)[0]</span>
+BufferList.prototype.get = <span class="fstat-no" title="function not covered">function get (index) {</span>
+<span class="cstat-no" title="statement not covered">  return this.slice(index, index + 1)[0]</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.slice = <span class="fstat-no" title="function not covered" >function slice (start, end) {</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof start == 'number' &amp;&amp; start &lt; 0)</span>
-<span class="cstat-no" title="statement not covered" >    start += this.length</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof end == 'number' &amp;&amp; end &lt; 0)</span>
-<span class="cstat-no" title="statement not covered" >    end += this.length</span>
-<span class="cstat-no" title="statement not covered" >  return this.copy(null, 0, start, end)</span>
+BufferList.prototype.slice = <span class="fstat-no" title="function not covered">function slice (start, end) {</span>
+<span class="cstat-no" title="statement not covered">  if (typeof start == 'number' &amp;&amp; start &lt; 0)</span>
+<span class="cstat-no" title="statement not covered">    start += this.length</span>
+<span class="cstat-no" title="statement not covered">  if (typeof end == 'number' &amp;&amp; end &lt; 0)</span>
+<span class="cstat-no" title="statement not covered">    end += this.length</span>
+<span class="cstat-no" title="statement not covered">  return this.copy(null, 0, start, end)</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.copy = <span class="fstat-no" title="function not covered" >function copy (dst, dstStart, srcStart, srcEnd) {</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof srcStart != 'number' || srcStart &lt; 0)</span>
-<span class="cstat-no" title="statement not covered" >    srcStart = 0</span>
-<span class="cstat-no" title="statement not covered" >  if (typeof srcEnd != 'number' || srcEnd &gt; this.length)</span>
-<span class="cstat-no" title="statement not covered" >    srcEnd = this.length</span>
-<span class="cstat-no" title="statement not covered" >  if (srcStart &gt;= this.length)</span>
-<span class="cstat-no" title="statement not covered" >    return dst || new Buffer(0)</span>
-<span class="cstat-no" title="statement not covered" >  if (srcEnd &lt;= 0)</span>
-<span class="cstat-no" title="statement not covered" >    return dst || new Buffer(0)</span>
+BufferList.prototype.copy = <span class="fstat-no" title="function not covered">function copy (dst, dstStart, srcStart, srcEnd) {</span>
+<span class="cstat-no" title="statement not covered">  if (typeof srcStart != 'number' || srcStart &lt; 0)</span>
+<span class="cstat-no" title="statement not covered">    srcStart = 0</span>
+<span class="cstat-no" title="statement not covered">  if (typeof srcEnd != 'number' || srcEnd &gt; this.length)</span>
+<span class="cstat-no" title="statement not covered">    srcEnd = this.length</span>
+<span class="cstat-no" title="statement not covered">  if (srcStart &gt;= this.length)</span>
+<span class="cstat-no" title="statement not covered">    return dst || new Buffer(0)</span>
+<span class="cstat-no" title="statement not covered">  if (srcEnd &lt;= 0)</span>
+<span class="cstat-no" title="statement not covered">    return dst || new Buffer(0)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var copy   = !!dst</span>
+<span class="cstat-no" title="statement not covered">  var copy   = !!dst</span>
     , off    = this._offset(srcStart)
     , len    = srcEnd - srcStart
     , bytes  = len
@@ -919,111 +917,111 @@ BufferList.prototype.copy = <span class="fstat-no" title="function not covered" 
     , i
 &nbsp;
   // copy/slice everything
-<span class="cstat-no" title="statement not covered" >  if (srcStart === 0 &amp;&amp; srcEnd == this.length) {</span>
-<span class="cstat-no" title="statement not covered" >    if (!copy) { // slice, but full concat if multiple buffers</span>
-<span class="cstat-no" title="statement not covered" >      return this._bufs.length === 1</span>
+<span class="cstat-no" title="statement not covered">  if (srcStart === 0 &amp;&amp; srcEnd == this.length) {</span>
+<span class="cstat-no" title="statement not covered">    if (!copy) { // slice, but full concat if multiple buffers</span>
+<span class="cstat-no" title="statement not covered">      return this._bufs.length === 1</span>
         ? this._bufs[0]
         : Buffer.concat(this._bufs, this.length)
     }
 &nbsp;
     // copy, need to copy individual buffers
-<span class="cstat-no" title="statement not covered" >    for (i = 0; i &lt; this._bufs.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >      this._bufs[i].copy(dst, bufoff)</span>
-<span class="cstat-no" title="statement not covered" >      bufoff += this._bufs[i].length</span>
+<span class="cstat-no" title="statement not covered">    for (i = 0; i &lt; this._bufs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered">      this._bufs[i].copy(dst, bufoff)</span>
+<span class="cstat-no" title="statement not covered">      bufoff += this._bufs[i].length</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return dst</span>
+<span class="cstat-no" title="statement not covered">    return dst</span>
   }
 &nbsp;
   // easy, cheap case where it's a subset of one of the buffers
-<span class="cstat-no" title="statement not covered" >  if (bytes &lt;= this._bufs[off[0]].length - start) {</span>
-<span class="cstat-no" title="statement not covered" >    return copy</span>
+<span class="cstat-no" title="statement not covered">  if (bytes &lt;= this._bufs[off[0]].length - start) {</span>
+<span class="cstat-no" title="statement not covered">    return copy</span>
       ? this._bufs[off[0]].copy(dst, dstStart, start, start + bytes)
       : this._bufs[off[0]].slice(start, start + bytes)
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (!copy) // a slice, we need something to copy in to</span>
-<span class="cstat-no" title="statement not covered" >    dst = new Buffer(len)</span>
+<span class="cstat-no" title="statement not covered">  if (!copy) // a slice, we need something to copy in to</span>
+<span class="cstat-no" title="statement not covered">    dst = new Buffer(len)</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  for (i = off[0]; i &lt; this._bufs.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >    l = this._bufs[i].length - start</span>
+<span class="cstat-no" title="statement not covered">  for (i = off[0]; i &lt; this._bufs.length; i++) {</span>
+<span class="cstat-no" title="statement not covered">    l = this._bufs[i].length - start</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (bytes &gt; l) {</span>
-<span class="cstat-no" title="statement not covered" >      this._bufs[i].copy(dst, bufoff, start)</span>
+<span class="cstat-no" title="statement not covered">    if (bytes &gt; l) {</span>
+<span class="cstat-no" title="statement not covered">      this._bufs[i].copy(dst, bufoff, start)</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      this._bufs[i].copy(dst, bufoff, start, start + bytes)</span>
-<span class="cstat-no" title="statement not covered" >      break</span>
+<span class="cstat-no" title="statement not covered">      this._bufs[i].copy(dst, bufoff, start, start + bytes)</span>
+<span class="cstat-no" title="statement not covered">      break</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    bufoff += l</span>
-<span class="cstat-no" title="statement not covered" >    bytes -= l</span>
+<span class="cstat-no" title="statement not covered">    bufoff += l</span>
+<span class="cstat-no" title="statement not covered">    bytes -= l</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (start)</span>
-<span class="cstat-no" title="statement not covered" >      start = 0</span>
+<span class="cstat-no" title="statement not covered">    if (start)</span>
+<span class="cstat-no" title="statement not covered">      start = 0</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return dst</span>
+<span class="cstat-no" title="statement not covered">  return dst</span>
 }
 &nbsp;
-BufferList.prototype.shallowSlice = <span class="fstat-no" title="function not covered" >function shallowSlice (start, end) {</span>
-<span class="cstat-no" title="statement not covered" >  start = start || 0</span>
-<span class="cstat-no" title="statement not covered" >  end = end || this.length</span>
+BufferList.prototype.shallowSlice = <span class="fstat-no" title="function not covered">function shallowSlice (start, end) {</span>
+<span class="cstat-no" title="statement not covered">  start = start || 0</span>
+<span class="cstat-no" title="statement not covered">  end = end || this.length</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (start &lt; 0)</span>
-<span class="cstat-no" title="statement not covered" >    start += this.length</span>
-<span class="cstat-no" title="statement not covered" >  if (end &lt; 0)</span>
-<span class="cstat-no" title="statement not covered" >    end += this.length</span>
+<span class="cstat-no" title="statement not covered">  if (start &lt; 0)</span>
+<span class="cstat-no" title="statement not covered">    start += this.length</span>
+<span class="cstat-no" title="statement not covered">  if (end &lt; 0)</span>
+<span class="cstat-no" title="statement not covered">    end += this.length</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  var startOffset = this._offset(start)</span>
+<span class="cstat-no" title="statement not covered">  var startOffset = this._offset(start)</span>
     , endOffset = this._offset(end)
     , buffers = this._bufs.slice(startOffset[0], endOffset[0] + 1)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (startOffset[1] != 0)</span>
-<span class="cstat-no" title="statement not covered" >    buffers[0] = buffers[0].slice(startOffset[1])</span>
+<span class="cstat-no" title="statement not covered">  if (startOffset[1] != 0)</span>
+<span class="cstat-no" title="statement not covered">    buffers[0] = buffers[0].slice(startOffset[1])</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (endOffset[1] == 0)</span>
-<span class="cstat-no" title="statement not covered" >    buffers.pop()</span>
+<span class="cstat-no" title="statement not covered">  if (endOffset[1] == 0)</span>
+<span class="cstat-no" title="statement not covered">    buffers.pop()</span>
   else
-<span class="cstat-no" title="statement not covered" >    buffers[buffers.length-1] = buffers[buffers.length-1].slice(0, endOffset[1])</span>
+<span class="cstat-no" title="statement not covered">    buffers[buffers.length-1] = buffers[buffers.length-1].slice(0, endOffset[1])</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return new BufferList(buffers)</span>
+<span class="cstat-no" title="statement not covered">  return new BufferList(buffers)</span>
 }
 &nbsp;
-BufferList.prototype.toString = <span class="fstat-no" title="function not covered" >function toString (encoding, start, end) {</span>
-<span class="cstat-no" title="statement not covered" >  return this.slice(start, end).toString(encoding)</span>
+BufferList.prototype.toString = <span class="fstat-no" title="function not covered">function toString (encoding, start, end) {</span>
+<span class="cstat-no" title="statement not covered">  return this.slice(start, end).toString(encoding)</span>
 }
 &nbsp;
-BufferList.prototype.consume = <span class="fstat-no" title="function not covered" >function consume (bytes) {</span>
-<span class="cstat-no" title="statement not covered" >  while (this._bufs.length) {</span>
-<span class="cstat-no" title="statement not covered" >    if (bytes &gt;= this._bufs[0].length) {</span>
-<span class="cstat-no" title="statement not covered" >      bytes -= this._bufs[0].length</span>
-<span class="cstat-no" title="statement not covered" >      this.length -= this._bufs[0].length</span>
-<span class="cstat-no" title="statement not covered" >      this._bufs.shift()</span>
+BufferList.prototype.consume = <span class="fstat-no" title="function not covered">function consume (bytes) {</span>
+<span class="cstat-no" title="statement not covered">  while (this._bufs.length) {</span>
+<span class="cstat-no" title="statement not covered">    if (bytes &gt;= this._bufs[0].length) {</span>
+<span class="cstat-no" title="statement not covered">      bytes -= this._bufs[0].length</span>
+<span class="cstat-no" title="statement not covered">      this.length -= this._bufs[0].length</span>
+<span class="cstat-no" title="statement not covered">      this._bufs.shift()</span>
     } else {
-<span class="cstat-no" title="statement not covered" >      this._bufs[0] = this._bufs[0].slice(bytes)</span>
-<span class="cstat-no" title="statement not covered" >      this.length -= bytes</span>
-<span class="cstat-no" title="statement not covered" >      break</span>
+<span class="cstat-no" title="statement not covered">      this._bufs[0] = this._bufs[0].slice(bytes)</span>
+<span class="cstat-no" title="statement not covered">      this.length -= bytes</span>
+<span class="cstat-no" title="statement not covered">      break</span>
     }
   }
-<span class="cstat-no" title="statement not covered" >  return this</span>
+<span class="cstat-no" title="statement not covered">  return this</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.duplicate = <span class="fstat-no" title="function not covered" >function duplicate () {</span>
-<span class="cstat-no" title="statement not covered" >  var i = 0</span>
+BufferList.prototype.duplicate = <span class="fstat-no" title="function not covered">function duplicate () {</span>
+<span class="cstat-no" title="statement not covered">  var i = 0</span>
     , copy = new BufferList()
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  for (; i &lt; this._bufs.length; i++)</span>
-<span class="cstat-no" title="statement not covered" >    copy.append(this._bufs[i])</span>
+<span class="cstat-no" title="statement not covered">  for (; i &lt; this._bufs.length; i++)</span>
+<span class="cstat-no" title="statement not covered">    copy.append(this._bufs[i])</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return copy</span>
+<span class="cstat-no" title="statement not covered">  return copy</span>
 }
 &nbsp;
 &nbsp;
-BufferList.prototype.destroy = <span class="fstat-no" title="function not covered" >function destroy () {</span>
-<span class="cstat-no" title="statement not covered" >  this._bufs.length = 0</span>
-<span class="cstat-no" title="statement not covered" >  this.length = 0</span>
-<span class="cstat-no" title="statement not covered" >  this.push(null)</span>
+BufferList.prototype.destroy = <span class="fstat-no" title="function not covered">function destroy () {</span>
+<span class="cstat-no" title="statement not covered">  this._bufs.length = 0</span>
+<span class="cstat-no" title="statement not covered">  this.length = 0</span>
+<span class="cstat-no" title="statement not covered">  this.push(null)</span>
 }
 &nbsp;
 &nbsp;
@@ -1047,8 +1045,8 @@ BufferList.prototype.destroy = <span class="fstat-no" title="function not covere
 &nbsp;
   for (var m in methods) {
     (function (m) {
-      BufferList.prototype[m] = <span class="fstat-no" title="function not covered" >function (offset) {</span>
-<span class="cstat-no" title="statement not covered" >        return this.slice(offset, offset + methods[m])[m](0)</span>
+      BufferList.prototype[m] = <span class="fstat-no" title="function not covered">function (offset) {</span>
+<span class="cstat-no" title="statement not covered">        return this.slice(offset, offset + methods[m])[m](0)</span>
       }
     }(m))
   }
@@ -1058,10 +1056,11 @@ BufferList.prototype.destroy = <span class="fstat-no" title="function not covere
 module.exports = BufferList
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 11:37:56 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 12:09:10 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
