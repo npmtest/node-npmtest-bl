@@ -1,4 +1,7 @@
-# test coverage for  [bl (v1.2.0)](https://github.com/rvagg/bl)  [![npm package](https://img.shields.io/npm/v/npmtest-bl.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-bl) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-bl.svg)](https://travis-ci.org/npmtest/node-npmtest-bl)
+# npmtest-bl
+
+#### basic test coverage for  [bl (v1.2.0)](https://github.com/rvagg/bl)  [![npm package](https://img.shields.io/npm/v/npmtest-bl.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-bl) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-bl.svg)](https://travis-ci.org/npmtest/node-npmtest-bl)
+
 #### Buffer List: collect buffers and access with a standard readable Buffer interface, streamable too!
 
 [![NPM](https://nodei.co/npm/bl.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/bl)
@@ -81,7 +84,8 @@
     "scripts": {
         "test": "node test/test.js | faucet"
     },
-    "version": "1.2.0"
+    "version": "1.2.0",
+    "bin": {}
 }
 ```
 
